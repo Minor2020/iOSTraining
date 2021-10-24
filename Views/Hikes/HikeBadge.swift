@@ -20,6 +20,7 @@ struct HikeBadge: View {
             
             Text(name)
                 .font(.caption)
+                // make the meaning of the badge clearer to other users
                 .accessibilityLabel("Badge for \(name)")
         }
     }

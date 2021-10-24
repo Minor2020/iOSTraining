@@ -15,6 +15,8 @@ import Foundation
 final class ModelData: ObservableObject {
     @Published var landmarks: [Landmark] = load("landmarkData.json")
     var hikes: [Hike] = load("hikeData.json")
+    // published 页面不可见该属性仍会持续存在，可在页面间传递数据
+    @Published var profile = Profile.default
     
     var features: [Landmark] {
         landmarks.filter { $0.isFeatured }

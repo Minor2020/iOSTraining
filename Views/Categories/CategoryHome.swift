@@ -15,11 +15,14 @@ struct CategoryHome: View {
     var body: some View {
         NavigationView {
             List {
-                modelData.features[0].image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(height: 200)
-                    .clipped()
+//                modelData.features[0].image
+//                    .resizable()
+//                    .scaledToFill()
+//                    .frame(height: 200)
+//                    .clipped()
+//                    .listRowInsets(EdgeInsets())
+                PageView(pages: modelData.features.map { FeatureCard(landmark: $0)})
+                    .aspectRatio(3 / 2, contentMode: .fit)
                     .listRowInsets(EdgeInsets())
                 
                 ForEach(modelData.categories.keys.sorted(), id: \.self) { key in
@@ -31,6 +34,7 @@ struct CategoryHome: View {
             .listStyle(InsetListStyle())
             .navigationTitle("Featured")
             .toolbar {
+                // 个人中心
                 Button(action: { showingProfile.toggle() }) {
                     Image(systemName: "person.crop.circle")
                         .accessibilityLabel("User Profile")
